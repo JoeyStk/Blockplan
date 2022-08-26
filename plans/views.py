@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Week, Class, Plan
 
-# Create your views here.
 
+# Views für die Homepage
 def home(request):
     plans = Plan.objects.all()
     weeks_dict = {}
@@ -24,4 +24,5 @@ def home(request):
         'weeks' : all_weeks,
         'classes': Class.objects.all()
     }
+    # übergibt das Context dict an Views
     return render(request, 'plans/home.html', context)

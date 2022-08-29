@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Week, Class, Plan
-
+from django.utils.translation import gettext_lazy as _
 
 # Views für die Homepage
 def home(request):

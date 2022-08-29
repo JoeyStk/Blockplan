@@ -1,4 +1,5 @@
 <!-- Das grundlegende Template auf dem die anderen aufbauen -->
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@
 
     <footer class="bg-light py-4">
         <div class="container">
-            Fehler oder Probleme können Sie gerne auf <a href="#">Github</a> melden.
+            {% trans 'Please report errors to' %} <a href="#">Github</a>. <!-- Fehler oder Probleme können Sie gerne auf  -->
         </div>
     </footer>
 

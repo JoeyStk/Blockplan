@@ -1,6 +1,6 @@
 <!-- erweitert base um die Homepage -->
 {% extends "plans/base.html" %}
-
+{% load i18n %}
 {% block title %}
 <title>Startseite</title>
 {% endblock title %}
@@ -10,7 +10,7 @@
 
     <div class="mb-4">
         <select>
-            <option>Wähle eine Klasse aus</option>
+            <option>{% trans "Choose a class" %}</option>
             {% for class in classes %}
             <option>{{ class.name }}</option>
             {% endfor %}
@@ -29,13 +29,13 @@
 
                 
                 <tr>
-                    <th rowspan="3">KW</th>
-                    <th rowspan="3">Startdatum</th>
-                    <th rowspan="3">Enddatum</th>
-                    <th rowspan="3">Tage</th>
-                    <th colspan="4">Elektro-Berufe</th>
-                    <th rowspan="3">Bemerkungen</th>
-                    <th colspan="9">IT-Berufe</th>
+                    <th rowspan="3">{% trans 'Week' %}</th>
+                    <th rowspan="3">{% trans 'Beginning of week' %}</th>
+                    <th rowspan="3">{% trans 'End of week' %}</th>
+                    <th rowspan="3">{% trans 'Days of the week' %}</th>
+                    <th colspan="4">{% trans 'Electronics' %}</th>
+                    <th rowspan="3">{% trans 'Comments' %}</th>
+                    <th colspan="9">{% trans 'IT' %}</th>
                 </tr>
                 <tr>
                     <th rowspan="2">10</th>

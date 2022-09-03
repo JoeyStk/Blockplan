@@ -78,7 +78,7 @@ class Week(models.Model):
         verbose_name="Klassen zuordnen",
         default=""
     )
-    odering = ('-week_id')
+    ordering = ('-week_id')
 
     def __str__(self):
         return self.name

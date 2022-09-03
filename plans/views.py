@@ -1,28 +1,52 @@
+from .models import Plan
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Week, Class, Plan
-from django.utils.translation import gettext_lazy as _
 
-# Views für die Homepage
+
 def home(request):
-    plans = Plan.objects.all()
-    weeks_dict = {}
-    for plan in plans:
-        week = plan.weeks.values()
-        weeks_dict = week
-    print(weeks_dict)
+    plan_list = []
+    for plan in Plan.objects.all():
+        if plan.status:
+            week_list = []
+            for week in plan.weeks.all():
+                if week.school:
+                    class_list = [
+                        week.week_id,
+                        week.start_date,
+                        week.end_date,
+                        week.amound_of_days,
+                    ]
+                    for year in range(10, 14):
+                        if week.reference.filter(profession='elektro', year=year):
+                            class_list.append(str(week.amound_of_days))
+                        else:
+                            class_list.append('')
 
-    all_weeks = Week.objects.all().order_by('start_date')
-    courses = {}
-    for week in all_weeks:
-        course = week.reference.values()
-        # courses[course[0]['name']] = course[0]
-    
+                    class_list.append(week.commentary)
+
+                    for year in range(10, 13):        
+                        for group in ['a', 'b', 'c']:
+                            if week.reference.filter(profession='it', year=year, group=group):
+                                class_list.append(str(week.amound_of_days))
+                            else:
+                                class_list.append('')
+                                
+                    week_list.append(class_list)
+                else:
+                    class_list = [
+                        week.week_id,
+                        week.start_date,
+                        week.end_date,
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        week.commentary,
+                    ]
+                    week_list.append(class_list)    
+            plan_list.append(week_list)
     context = {
-        'plans': plans,
-        'plans_courses' : courses,
-        'weeks' : all_weeks,
-        'classes': Class.objects.all()
+        'plan_list': plan_list,
     }
-    # übergibt das Context dict an Views
     return render(request, 'plans/home.html', context)
+

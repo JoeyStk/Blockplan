@@ -41,7 +41,9 @@ class Class(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Klassen"
+        verbose_name = "Klasse"
+        verbose_name_plural = "Klassen"
+        ordering = ('name',) 
 
 class Week(models.Model):
     """
@@ -58,15 +60,14 @@ class Week(models.Model):
     ordering: Option die Sortierung zu ändern
 
     """
-    name = models.CharField(max_length=255, verbose_name="Name")
     week_id = models.IntegerField(
         null = True,
         default=1,
         verbose_name="Kalendarwoche"
     )
     school = models.BooleanField(verbose_name="Schulwoche", null=False, default=True)
-    start_date = models.DateField(verbose_name="Startdatum")
-    end_date = models.DateField(verbose_name="Enddatum")
+    start_date = models.DateField(verbose_name="Startdatum", blank=True)
+    end_date = models.DateField(verbose_name="Enddatum", blank=True)
     commentary = models.CharField(max_length=255, default="", verbose_name="Kommentar", blank=True)
     amound_of_days = models.IntegerField(
         null=False, 
@@ -76,15 +77,16 @@ class Week(models.Model):
     reference = models.ManyToManyField(
         Class, 
         verbose_name="Klassen zuordnen",
-        default=""
+        blank=True
     )
-    ordering = ('-week_id')
 
     def __str__(self):
-        return self.name
+        return "KW" + str(self.week_id)
 
     class Meta:
-        verbose_name = "Blockwochen"
+        verbose_name = "Blockwoche"
+        verbose_name_plural = "Blockwochen"
+        ordering = ('week_id',)
     
 class Plan(models.Model):
     """
@@ -103,4 +105,6 @@ class Plan(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Blockpläne"
+        verbose_name = "Blockplan"
+        verbose_name_plural = "Blockpläne"
+        ordering = ('name',)

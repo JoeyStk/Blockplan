@@ -1,6 +1,5 @@
-from .models import Plan
+from .models import Plan, Week, Class
 from django.shortcuts import render
-
 
 def home(request):
     plan_list = []
@@ -10,7 +9,7 @@ def home(request):
             for week in plan.weeks.all():
                 if week.school:
                     class_list = [
-                        week.week_id,
+                        int(str(week.week_id)[2:]),
                         week.start_date,
                         week.end_date,
                         week.amound_of_days,
@@ -33,7 +32,7 @@ def home(request):
                     week_list.append(class_list)
                 else:
                     class_list = [
-                        week.week_id,
+                        int(str(week.week_id)[2:]),
                         week.start_date,
                         week.end_date,
                         '',
@@ -42,11 +41,21 @@ def home(request):
                         '',
                         '',
                         week.commentary,
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
                     ]
                     week_list.append(class_list)    
             plan_list.append(week_list)
     context = {
         'plan_list': plan_list,
+        'classes' : Class.objects.all
     }
     return render(request, 'plans/home.html', context)
 

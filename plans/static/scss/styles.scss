@@ -1,3 +1,35 @@
-body {
-    // background-color: orange;
+$green: #3E9B87;
+
+$grey-800: #202225;
+$grey-700: #2B2D32;
+$grey-600: #36383f;
+$grey-500: #43454B;
+$grey-200: #cccccc;
+$white: #fff;
+
+tr:nth-child(2n+3) {
+    color: $white;
+    background-color: $grey-500;
+}
+
+.bg-grey-800 {
+    color: $white;
+    background-color: $grey-800 !important;
+}
+
+.bg.grey-700 {
+    background-color: $grey-700 !important;
+}
+
+.bg-grey-600 {
+    color: $white;
+    background-color: $grey-600 !important;
+}
+
+.bg-grey-500 {
+    background-color: $grey-500 !important;
+}
+  
+.bg-green {
+    background-color: $green;
 }

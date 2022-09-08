@@ -15,11 +15,11 @@
             <option>{{ class.name }}</option>
             {% endfor %}
         </select>
-        <button class="bg-success text-white px-2 py-1">Filter!</button>
+        <button class="bg-success text-white border-0 rounded px-3 py-2">Filter!</button>
     </div>
 
 
-    <table class="table">
+    <table id="table" class="table">
         {% for week_list in plan_list %}
         <tr>
             <th rowspan="3">{% trans 'Week' %}</th>
@@ -43,7 +43,7 @@
         <tr>
             <th>a</th>
             <th>b</th>
-            <th>c</th>
+            <th>c</th>  
             <th>a</th>
             <th>b</th>
             <th>c</th>
@@ -55,7 +55,7 @@
             {% for class_list in week_list %}
             <tr>
                 {% for element in class_list %}
-                <td>
+                <td name="{{ element }}">
                     {{ element }}
                 </td>
                 {% endfor %}

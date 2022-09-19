@@ -1,0 +1,35 @@
+tr:nth-child(2n+3) {
+  background-color: #cccccc;
+}
+
+.bg-grey-800 {
+  color: #fff;
+  background-color: #202225 !important;
+}
+
+.bg.grey-700 {
+  background-color: #2B2D32 !important;
+}
+
+.bg-grey-600 {
+  color: #fff;
+  background-color: #36383f !important;
+}
+
+.bg-grey-500 {
+  background-color: #43454B !important;
+}
+
+.bg-grey-200 {
+  background-color: #cccccc;
+}
+
+.bg-green {
+  background-color: #198722 !important;
+}
+
+select {
+  padding: 7.5px 0;
+}
+
+/*# sourceMappingURL=styles.css.map */

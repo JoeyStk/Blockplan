@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "sass": "^1.54.5",
+    "update-notifier": "^6.0.2"
+  }
+}
